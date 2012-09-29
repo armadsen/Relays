@@ -13,6 +13,12 @@
 		9D048BD916179B8F00BE7D40 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9D048BD716179B8F00BE7D40 /* Credits.rtf */; };
 		9D048BDC16179B8F00BE7D40 /* ORSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D048BDB16179B8F00BE7D40 /* ORSAppDelegate.m */; };
 		9D048BDF16179B8F00BE7D40 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D048BDD16179B8F00BE7D40 /* MainMenu.xib */; };
+		9D048C0F16179C2A00BE7D40 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D048BFE16179C2A00BE7D40 /* ORSSerialPort.m */; };
+		9D048C1016179C2A00BE7D40 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D048C0016179C2A00BE7D40 /* ORSSerialPortManager.m */; };
+		9D048C1616179C4800BE7D40 /* ORSRelaysController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D048C1516179C4800BE7D40 /* ORSRelaysController.m */; };
+		9D048C1916179C7C00BE7D40 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D048C1816179C7C00BE7D40 /* IOKit.framework */; };
+		9D048C1C16179FDC00BE7D40 /* ORSRelayControlPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D048C1B16179FDC00BE7D40 /* ORSRelayControlPacket.m */; };
+		9D048C1F1617A6A400BE7D40 /* HexPacket.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D048C1D1617A63800BE7D40 /* HexPacket.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +35,17 @@
 		9D048BDA16179B8F00BE7D40 /* ORSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ORSAppDelegate.h; sourceTree = "<group>"; };
 		9D048BDB16179B8F00BE7D40 /* ORSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ORSAppDelegate.m; sourceTree = "<group>"; };
 		9D048BDE16179B8F00BE7D40 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9D048BFD16179C2A00BE7D40 /* ORSSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ORSSerialPort.h; path = Source/ORSSerialPort.h; sourceTree = "<group>"; };
+		9D048BFE16179C2A00BE7D40 /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ORSSerialPort.m; path = Source/ORSSerialPort.m; sourceTree = "<group>"; };
+		9D048BFF16179C2A00BE7D40 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ORSSerialPortManager.h; path = Source/ORSSerialPortManager.h; sourceTree = "<group>"; };
+		9D048C0016179C2A00BE7D40 /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ORSSerialPortManager.m; path = Source/ORSSerialPortManager.m; sourceTree = "<group>"; };
+		9D048C1416179C4800BE7D40 /* ORSRelaysController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSRelaysController.h; sourceTree = "<group>"; };
+		9D048C1516179C4800BE7D40 /* ORSRelaysController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSRelaysController.m; sourceTree = "<group>"; };
+		9D048C1816179C7C00BE7D40 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		9D048C1A16179FDC00BE7D40 /* ORSRelayControlPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSRelayControlPacket.h; sourceTree = "<group>"; };
+		9D048C1B16179FDC00BE7D40 /* ORSRelayControlPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSRelayControlPacket.m; sourceTree = "<group>"; };
+		9D048C1D1617A63800BE7D40 /* HexPacket.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = HexPacket.c; sourceTree = "<group>"; };
+		9D048C1E1617A63800BE7D40 /* HexPacket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HexPacket.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D048C1916179C7C00BE7D40 /* IOKit.framework in Frameworks */,
 				9D048BC916179B8F00BE7D40 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				9D048BCE16179B8F00BE7D40 /* Relays */,
+				9D048C1716179C5300BE7D40 /* Resources */,
 				9D048BC716179B8F00BE7D40 /* Frameworks */,
 				9D048BC516179B8F00BE7D40 /* Products */,
 			);
@@ -63,6 +82,7 @@
 		9D048BC716179B8F00BE7D40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D048C1816179C7C00BE7D40 /* IOKit.framework */,
 				9D048BC816179B8F00BE7D40 /* Cocoa.framework */,
 				9D048BCA16179B8F00BE7D40 /* Other Frameworks */,
 			);
@@ -84,7 +104,13 @@
 			children = (
 				9D048BDA16179B8F00BE7D40 /* ORSAppDelegate.h */,
 				9D048BDB16179B8F00BE7D40 /* ORSAppDelegate.m */,
-				9D048BDD16179B8F00BE7D40 /* MainMenu.xib */,
+				9D048C1416179C4800BE7D40 /* ORSRelaysController.h */,
+				9D048C1516179C4800BE7D40 /* ORSRelaysController.m */,
+				9D048C1A16179FDC00BE7D40 /* ORSRelayControlPacket.h */,
+				9D048C1B16179FDC00BE7D40 /* ORSRelayControlPacket.m */,
+				9D048C1E1617A63800BE7D40 /* HexPacket.h */,
+				9D048C1D1617A63800BE7D40 /* HexPacket.c */,
+				9D048BE516179C2A00BE7D40 /* ORSSerialPort */,
 				9D048BCF16179B8F00BE7D40 /* Supporting Files */,
 			);
 			path = Relays;
@@ -100,6 +126,26 @@
 				9D048BD716179B8F00BE7D40 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9D048BE516179C2A00BE7D40 /* ORSSerialPort */ = {
+			isa = PBXGroup;
+			children = (
+				9D048BFD16179C2A00BE7D40 /* ORSSerialPort.h */,
+				9D048BFE16179C2A00BE7D40 /* ORSSerialPort.m */,
+				9D048BFF16179C2A00BE7D40 /* ORSSerialPortManager.h */,
+				9D048C0016179C2A00BE7D40 /* ORSSerialPortManager.m */,
+			);
+			path = ORSSerialPort;
+			sourceTree = SOURCE_ROOT;
+		};
+		9D048C1716179C5300BE7D40 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9D048BDD16179B8F00BE7D40 /* MainMenu.xib */,
+			);
+			name = Resources;
+			path = Relays;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +215,11 @@
 			files = (
 				9D048BD516179B8F00BE7D40 /* main.m in Sources */,
 				9D048BDC16179B8F00BE7D40 /* ORSAppDelegate.m in Sources */,
+				9D048C0F16179C2A00BE7D40 /* ORSSerialPort.m in Sources */,
+				9D048C1016179C2A00BE7D40 /* ORSSerialPortManager.m in Sources */,
+				9D048C1616179C4800BE7D40 /* ORSRelaysController.m in Sources */,
+				9D048C1C16179FDC00BE7D40 /* ORSRelayControlPacket.m in Sources */,
+				9D048C1F1617A6A400BE7D40 /* HexPacket.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
