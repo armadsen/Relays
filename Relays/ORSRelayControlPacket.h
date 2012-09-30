@@ -19,6 +19,7 @@ enum {
 
 - (void)setCommand:(ORSRelayCommand)command forRelayNumber:(NSUInteger)relayNumber;
 - (ORSRelayCommand)commandForRelayNumber:(NSUInteger)relayNumber;
+- (void)setCommandForAllRelays:(ORSRelayCommand)command;
 
 @property (nonatomic) int sourceAddress;
 @property (nonatomic) int targetAddress;

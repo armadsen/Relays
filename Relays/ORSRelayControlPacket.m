@@ -13,7 +13,7 @@
 
 - (void)setCommand:(ORSRelayCommand)command forRelayNumber:(NSUInteger)relayNumber;
 {
-    if (relayNumber > [[self relayCommands] count]-1) return;
+	if (relayNumber == 0 || relayNumber > [[self relayCommands] count]) return;
     
     NSString *key = [NSString stringWithFormat:@"relay%luCommand", relayNumber];
     [self setValue:@(command) forKey:key];
@@ -25,6 +25,13 @@
     
     NSString *key = [NSString stringWithFormat:@"relay%luCommand", relayNumber];
     return [[self valueForKey:key] unsignedIntegerValue];
+}
+
+- (void)setCommandForAllRelays:(ORSRelayCommand)command;
+{
+	for (NSUInteger i=1; i<=16; i++) {
+		[self setCommand:command forRelayNumber:i];
+	}
 }
 
 - (NSData *)packetData

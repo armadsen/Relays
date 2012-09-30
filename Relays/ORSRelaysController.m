@@ -20,9 +20,27 @@
 
 - (IBAction)relayButtonClicked:(id)sender;
 {
+	NSUInteger relayNumber = [sender tag] + 1;
+	
     ORSRelayControlPacket *packet = [[ORSRelayControlPacket alloc] init];
-    [packet setCommand:ORSRelayCommandOn forRelayNumber:[sender tag]+1];
-    
+	packet.targetAddress = 42676;
+	packet.sourceAddress = 43641;
+	if (relayNumber > 0 && relayNumber <= 16)
+	{
+	ORSRelayCommand relayCommand = [sender state] == NSOnState ? ORSRelayCommandOn : ORSRelayCommandOff; // State here is *after* click is processed
+	[packet setCommand:relayCommand forRelayNumber:[sender tag]+1];
+	}
+	else if (relayNumber == 17)
+	{
+		// All on
+		[packet setCommandForAllRelays:ORSRelayCommandOn];
+	}
+	else if (relayNumber == 18)
+	{
+		// All off
+		[packet setCommandForAllRelays:ORSRelayCommandOff];
+	}
+
     NSData *data = [packet packetData];
     [self.serialPort sendData:data];
 }
