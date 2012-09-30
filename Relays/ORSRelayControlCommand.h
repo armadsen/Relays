@@ -15,7 +15,7 @@ enum {
     ORSRelayCommandMomentaryOn,
 }; typedef NSUInteger ORSRelayCommand;
 
-@interface ORSRelayControlPacket : NSObject <NSCoding>
+@interface ORSRelayControlCommand : NSObject <NSCoding>
 
 - (void)setCommand:(ORSRelayCommand)command forRelayNumber:(NSUInteger)relayNumber;
 - (ORSRelayCommand)commandForRelayNumber:(NSUInteger)relayNumber;
@@ -40,6 +40,8 @@ enum {
 @property (nonatomic) ORSRelayCommand relay14Command;
 @property (nonatomic) ORSRelayCommand relay15Command;
 @property (nonatomic) ORSRelayCommand relay16Command;
+
+@property (nonatomic) NSTimeInterval timestamp;
 
 @property (nonatomic, readonly) NSData *packetData;
 

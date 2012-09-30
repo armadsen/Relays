@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Open Reel Software. All rights reserved.
 //
 
-#import "ORSRelayControlPacket.h"
+#import "ORSRelayControlCommand.h"
 #import "HexPacket.h"
 
-@implementation ORSRelayControlPacket
+@implementation ORSRelayControlCommand
 
 - (void)setCommand:(ORSRelayCommand)command forRelayNumber:(NSUInteger)relayNumber;
 {
