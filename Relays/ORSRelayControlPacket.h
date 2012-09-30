@@ -15,7 +15,7 @@ enum {
     ORSRelayCommandMomentaryOn,
 }; typedef NSUInteger ORSRelayCommand;
 
-@interface ORSRelayControlPacket : NSObject
+@interface ORSRelayControlPacket : NSObject <NSCoding>
 
 - (void)setCommand:(ORSRelayCommand)command forRelayNumber:(NSUInteger)relayNumber;
 - (ORSRelayCommand)commandForRelayNumber:(NSUInteger)relayNumber;

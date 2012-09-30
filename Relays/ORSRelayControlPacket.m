@@ -147,4 +147,31 @@
     return @[@(self.relay1Command), @(self.relay2Command), @(self.relay3Command), @(self.relay4Command), @(self.relay5Command), @(self.relay6Command), @(self.relay7Command), @(self.relay8Command), @(self.relay9Command), @(self.relay10Command), @(self.relay11Command), @(self.relay12Command), @(self.relay13Command), @(self.relay14Command), @(self.relay15Command), @(self.relay16Command)];
 }
 
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:@(self.sourceAddress) forKey:[NSString stringWithFormat:@"%@_sourceAddress", NSStringFromClass([self class])]];
+    [aCoder encodeObject:@(self.targetAddress) forKey:[NSString stringWithFormat:@"%@_targetAddress", NSStringFromClass([self class])]];
+    for (NSUInteger i=1; i<=16; i++) {
+        NSString *key = [NSString stringWithFormat:@"%@_relay%luCommand", NSStringFromClass([self class]), i];
+		[aCoder encodeObject:@([self commandForRelayNumber:i]) forKey:key];
+	}
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [self init];
+    if (self)
+    {
+        self.sourceAddress = [aDecoder decodeIntForKey:[NSString stringWithFormat:@"%@_sourceAddress", NSStringFromClass([self class])]];
+        self.targetAddress = [aDecoder decodeIntForKey:[NSString stringWithFormat:@"%@_targetAddress", NSStringFromClass([self class])]];
+        for (NSUInteger i=1; i<=16; i++) {
+            NSString *key = [NSString stringWithFormat:@"%@_relay%luCommand", NSStringFromClass([self class]), i];
+            [self setCommand:[[aDecoder decodeObjectForKey:key] unsignedIntegerValue] forRelayNumber:i];
+        }
+    }
+    return self;
+}
+
 @end
