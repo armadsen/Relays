@@ -11,6 +11,22 @@
 
 @implementation ORSRelayControlPacket
 
+- (void)setCommand:(ORSRelayCommand)command forRelayNumber:(NSUInteger)relayNumber;
+{
+    if (relayNumber > [[self relayCommands] count]-1) return;
+    
+    NSString *key = [NSString stringWithFormat:@"relay%luCommand", relayNumber];
+    [self setValue:@(command) forKey:key];
+}
+
+- (ORSRelayCommand)commandForRelayNumber:(NSUInteger)relayNumber;
+{
+    if (relayNumber > [[self relayCommands] count]-1) return ORSRelayCommandUnchanged;
+    
+    NSString *key = [NSString stringWithFormat:@"relay%luCommand", relayNumber];
+    return [[self valueForKey:key] unsignedIntegerValue];
+}
+
 - (NSData *)packetData
 {
     NSMutableData *result = [NSMutableData dataWithCapacity:28];

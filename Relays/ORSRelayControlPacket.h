@@ -17,6 +17,9 @@ enum {
 
 @interface ORSRelayControlPacket : NSObject
 
+- (void)setCommand:(ORSRelayCommand)command forRelayNumber:(NSUInteger)relayNumber;
+- (ORSRelayCommand)commandForRelayNumber:(NSUInteger)relayNumber;
+
 @property (nonatomic) int sourceAddress;
 @property (nonatomic) int targetAddress;
 

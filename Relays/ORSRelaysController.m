@@ -7,13 +7,24 @@
 //
 
 #import "ORSRelaysController.h"
+#import "ORSSerialPortManager.h"
 #import "ORSSerialPort.h"
+#import "ORSRelayControlPacket.h"
 
 @implementation ORSRelaysController
 
+- (void)awakeFromNib
+{
+    self.serialPortManager = [ORSSerialPortManager sharedSerialPortManager];
+}
+
 - (IBAction)relayButtonClicked:(id)sender;
 {
+    ORSRelayControlPacket *packet = [[ORSRelayControlPacket alloc] init];
+    [packet setCommand:ORSRelayCommandOn forRelayNumber:[sender tag]+1];
     
+    NSData *data = [packet packetData];
+    [self.serialPort sendData:data];
 }
 
 #pragma mark - Properties
