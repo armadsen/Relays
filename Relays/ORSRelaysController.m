@@ -34,11 +34,21 @@
 	{
 		// All on
 		[packet setCommandForAllRelays:ORSRelayCommandOn];
+        for (NSUInteger i=1; i<=16; i++) {
+            NSString *key = [NSString stringWithFormat:@"relay%luButton", i];
+            NSButton *button = [self valueForKey:key];
+            button.state = NSOnState;
+        }
 	}
 	else if (relayNumber == 18)
 	{
 		// All off
 		[packet setCommandForAllRelays:ORSRelayCommandOff];
+        for (NSUInteger i=1; i<=16; i++) {
+            NSString *key = [NSString stringWithFormat:@"relay%luButton", i];
+            NSButton *button = [self valueForKey:key];
+            button.state = NSOffState;
+        }
 	}
 
     NSData *data = [packet packetData];
