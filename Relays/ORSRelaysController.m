@@ -54,12 +54,15 @@
 {
 	NSUInteger relayNumber = [sender tag] + 1;
 	
+	BOOL shouldBeMomentary = (relayNumber >= 1 && relayNumber <= 6) || relayNumber == 9 || relayNumber == 13;
+	
     ORSRelayControlCommand *packet = [[ORSRelayControlCommand alloc] init];
 	packet.targetAddress = TARGET_ADDRESS;
 	packet.sourceAddress = TARGET_ADDRESS;
 	if (relayNumber > 0 && relayNumber <= 16)
 	{
-		ORSRelayCommand relayCommand = [sender state] == NSOnState ? ORSRelayCommandOn : ORSRelayCommandOff; // State here is *after* click is processed
+		ORSRelayCommand relayCommand;
+			relayCommand = shouldBeMomentary ? ORSRelayCommandMomentaryOn : (([sender state] == NSOnState ? ORSRelayCommandOn : ORSRelayCommandOff)); // State here is *after* click is processed
 		[packet setCommand:relayCommand forRelayNumber:[sender tag]+1];
 	}
 	else if (relayNumber == 17)
