@@ -151,8 +151,6 @@
 	NSMutableArray *commandsToPlay = [NSMutableArray array];
 	NSTimeInterval timeSinceStart = [[NSDate date] timeIntervalSinceDate:self.playbackStartDate];
 	
-	NSLog(@"%s %f", __PRETTY_FUNCTION__, timeSinceStart);
-	
 	for (ORSRelayControlCommand *command in self.commandsQueue)
 	{
 		if (command.timestamp > timeSinceStart) break;
