@@ -23,7 +23,7 @@
 	NSUInteger relayNumber = [sender tag] + 1;
 	
     ORSRelayControlCommand *packet = [[ORSRelayControlCommand alloc] init];
-	packet.targetAddress = 42676;
+	packet.targetAddress = 21442;
 	packet.sourceAddress = 43641;
 	if (relayNumber > 0 && relayNumber <= 16)
 	{
