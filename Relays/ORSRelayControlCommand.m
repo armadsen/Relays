@@ -72,7 +72,7 @@
     {
         checksum += ((unsigned char *)[data bytes])[i];
     }
-
+	
     NSMutableData *result = [NSMutableData dataWithBytes:&(char[]){0x00, 0x00} length:2];
     CvtByteValToTwoDigitHexStr([result mutableBytes], checksum);
     return result;
@@ -151,8 +151,8 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:@(self.sourceAddress) forKey:[NSString stringWithFormat:@"%@_sourceAddress", NSStringFromClass([self class])]];
-    [aCoder encodeObject:@(self.targetAddress) forKey:[NSString stringWithFormat:@"%@_targetAddress", NSStringFromClass([self class])]];
+    [aCoder encodeInt:self.sourceAddress forKey:[NSString stringWithFormat:@"%@_sourceAddress", NSStringFromClass([self class])]];
+    [aCoder encodeInt:self.targetAddress forKey:[NSString stringWithFormat:@"%@_targetAddress", NSStringFromClass([self class])]];
     for (NSUInteger i=1; i<=16; i++) {
         NSString *key = [NSString stringWithFormat:@"%@_relay%luCommand", NSStringFromClass([self class]), i];
 		[aCoder encodeObject:@([self commandForRelayNumber:i]) forKey:key];
@@ -172,6 +172,19 @@
         }
     }
     return self;
+}
+
+#pragma mark -
+
+- (void)setNilValueForKey:(NSString *)key
+{
+	if ([key rangeOfString:@"Command"].location != NSNotFound)
+	{
+		[self setValue:@(ORSRelayCommandUnchanged) forKey:key];
+		return;
+	}
+	
+	[super setNilValueForKey:key];
 }
 
 @end

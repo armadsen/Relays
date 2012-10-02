@@ -10,6 +10,9 @@
 
 @interface ORSCommandSequenceController : NSObject
 
+- (IBAction)saveCommands:(id)sender;
+- (IBAction)loadCommands:(id)sender;
+
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
 @property (nonatomic, strong) IBOutlet NSArrayController *commandsController;
 

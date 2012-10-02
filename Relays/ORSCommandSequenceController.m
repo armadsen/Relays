@@ -18,7 +18,13 @@
         NSString *title = [NSString stringWithFormat:@"Relay %lu", i];
         NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:title];
         [[column headerCell] setTitle:title];
-        
+        NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+		[numFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		[numFormatter setMinimum:@(0)];
+		[numFormatter setMaximum:@(3)];
+		[[column dataCell] setFormatter:numFormatter];
+		
+		
         NSDictionary *bindingOptions = @{NSContinuouslyUpdatesValueBindingOption : @(YES)};
         [column bind:@"value"
             toObject:self.commandsController
@@ -26,6 +32,37 @@
              options:bindingOptions];
         [self.tableView addTableColumn:column];
     }
+}
+
+#pragma mark - Actions
+
+- (IBAction)saveCommands:(id)sender;
+{
+	NSSavePanel *savePanel = [NSSavePanel savePanel];
+	savePanel.allowedFileTypes = @[@"commands"];
+	[savePanel beginWithCompletionHandler:^(NSInteger result) {
+		if (result != NSFileHandlingPanelOKButton) return;
+		
+		NSArray *commands = [self.commandsController arrangedObjects];
+		if (![NSKeyedArchiver archiveRootObject:commands toFile:[[savePanel URL] path]])
+		{
+			NSLog(@"Unable to write commands to %@", [savePanel URL]);
+		}
+	}];
+}
+
+- (IBAction)loadCommands:(id)sender;
+{
+	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+	openPanel.allowedFileTypes = @[@"commands"];
+	[openPanel beginWithCompletionHandler:^(NSInteger result) {
+		if (result != NSFileHandlingPanelOKButton) return;
+		
+		NSArray *commands = [NSKeyedUnarchiver unarchiveObjectWithFile:[[openPanel URL] path]];
+		if (!commands) return;
+		
+		[self.commandsController setContent:commands];
+	}];
 }
 
 @end
