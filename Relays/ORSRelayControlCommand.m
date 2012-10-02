@@ -11,6 +11,11 @@
 
 @implementation ORSRelayControlCommand
 
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"%@ %i -> %i: %@", [super description], self.sourceAddress, self.targetAddress, [self relayCommands]];
+}
+
 - (void)setCommand:(ORSRelayCommand)command forRelayNumber:(NSUInteger)relayNumber;
 {
 	if (relayNumber == 0 || relayNumber > [[self relayCommands] count]) return;
@@ -151,6 +156,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
+	[aCoder encodeDouble:self.timestamp forKey:[NSString stringWithFormat:@"%@_timestamp", NSStringFromClass([self class])]];
     [aCoder encodeInt:self.sourceAddress forKey:[NSString stringWithFormat:@"%@_sourceAddress", NSStringFromClass([self class])]];
     [aCoder encodeInt:self.targetAddress forKey:[NSString stringWithFormat:@"%@_targetAddress", NSStringFromClass([self class])]];
     for (NSUInteger i=1; i<=16; i++) {
@@ -164,6 +170,7 @@
     self = [self init];
     if (self)
     {
+		self.timestamp = [aDecoder decodeDoubleForKey:[NSString stringWithFormat:@"%@_timestamp", NSStringFromClass([self class])]];
         self.sourceAddress = [aDecoder decodeIntForKey:[NSString stringWithFormat:@"%@_sourceAddress", NSStringFromClass([self class])]];
         self.targetAddress = [aDecoder decodeIntForKey:[NSString stringWithFormat:@"%@_targetAddress", NSStringFromClass([self class])]];
         for (NSUInteger i=1; i<=16; i++) {

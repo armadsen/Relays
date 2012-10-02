@@ -19,7 +19,6 @@
 		9D048C1916179C7C00BE7D40 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D048C1816179C7C00BE7D40 /* IOKit.framework */; };
 		9D048C1C16179FDC00BE7D40 /* ORSRelayControlCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D048C1B16179FDC00BE7D40 /* ORSRelayControlCommand.m */; };
 		9D048C1F1617A6A400BE7D40 /* HexPacket.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D048C1D1617A63800BE7D40 /* HexPacket.c */; };
-		9D048C471618EBEF00BE7D40 /* ORSCommandSequenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D048C461618EBEF00BE7D40 /* ORSCommandSequenceController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +46,6 @@
 		9D048C1B16179FDC00BE7D40 /* ORSRelayControlCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSRelayControlCommand.m; sourceTree = "<group>"; };
 		9D048C1D1617A63800BE7D40 /* HexPacket.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = HexPacket.c; sourceTree = "<group>"; };
 		9D048C1E1617A63800BE7D40 /* HexPacket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HexPacket.h; sourceTree = "<group>"; };
-		9D048C451618EBEF00BE7D40 /* ORSCommandSequenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSCommandSequenceController.h; sourceTree = "<group>"; };
-		9D048C461618EBEF00BE7D40 /* ORSCommandSequenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSCommandSequenceController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +106,6 @@
 				9D048BDB16179B8F00BE7D40 /* ORSAppDelegate.m */,
 				9D048C1416179C4800BE7D40 /* ORSRelaysController.h */,
 				9D048C1516179C4800BE7D40 /* ORSRelaysController.m */,
-				9D048C451618EBEF00BE7D40 /* ORSCommandSequenceController.h */,
-				9D048C461618EBEF00BE7D40 /* ORSCommandSequenceController.m */,
 				9D048C1A16179FDC00BE7D40 /* ORSRelayControlCommand.h */,
 				9D048C1B16179FDC00BE7D40 /* ORSRelayControlCommand.m */,
 				9D048C1E1617A63800BE7D40 /* HexPacket.h */,
@@ -225,7 +220,6 @@
 				9D048C1616179C4800BE7D40 /* ORSRelaysController.m in Sources */,
 				9D048C1C16179FDC00BE7D40 /* ORSRelayControlCommand.m in Sources */,
 				9D048C1F1617A6A400BE7D40 /* HexPacket.c in Sources */,
-				9D048C471618EBEF00BE7D40 /* ORSCommandSequenceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
